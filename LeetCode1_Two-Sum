@@ -1,0 +1,26 @@
+class Solution(object):
+    def twoSum(self, nums, target):
+        """
+        :type nums: List[int]
+        :type target: int
+        :rtype: List[int]
+        """
+        NumLen=len(nums)
+        for i in range(NumLen):
+            ans2=target-nums[i]
+            if ans2 in nums:
+                ans1=nums[i]
+                located1=nums.index(ans1)
+                located2=nums.index(ans2)
+                if located1==located2:
+                    del nums[located1]
+                    if ans2 in nums:
+                        located2=nums.index(ans2)+1
+                        break
+                    else:
+                        nums.insert(located1,ans1)
+                        continue
+                else:
+                    break
+
+        return located1,located2
