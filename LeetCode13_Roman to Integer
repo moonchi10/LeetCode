@@ -1,0 +1,35 @@
+class Solution(object):
+    def romanToInt(self, s):
+        """
+        :type s: str
+        :rtype: int
+        """
+        num=0
+        for i in s:
+            if i == "I":
+                num=num+1
+            elif i =="V":
+                num=num+5
+            elif i =="X":
+                num=num+10
+            elif i =="L":
+                num=num+50
+            elif i =="C":
+                num=num+100
+            elif i =="D":
+                num=num+500
+            elif i =="M":
+                num=num+1000
+        if "IV" in s:
+            num=num-2
+        if "IX" in s:
+            num=num-2
+        if "XL" in s:
+            num=num-20
+        if "XC" in s:
+            num=num-20
+        if "CD" in s:
+            num=num-200
+        if "CM" in s:
+            num=num-200
+        return num
