@@ -1,0 +1,35 @@
+class Solution(object):
+    def findJudge(self, n, trust):
+        """
+        :type n: int
+        :type trust: List[List[int]]
+        :rtype: int
+        """
+        nList=[]
+        nCounter=[]
+        counter=0
+        LenthList=len(trust)
+        for i in range(1,n+1):
+            counter=0
+            for j in range(LenthList):
+                if i == trust[j][0]:
+                    nList.append(i)
+                if i == trust[j][1]:
+                    counter=counter+1
+            nCounter.append(counter)
+        ans=None
+        for i in range(1,n+1):
+            if i in nList:
+                pass
+            else:
+                ans=i
+        if ans == None:
+            return -1
+        elif nCounter[ans-1]<ans-1:
+            return -1
+        elif n==1 and not trust:
+       # not trust->可以用 if 直接判斷列表 a 是否為空，是因為對於 list 來說，它沒有內建方法 __bool__()，
+       #但有內建方法 __len__()，最後通過判斷 list 長度是否為 0 來得出 true 或者 false 的，一旦為空，則判斷結果為 false
+            return n
+        else:
+            return ans
