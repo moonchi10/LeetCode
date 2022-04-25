@@ -1,2 +1,2 @@
 # LeetCode
-Practicing LeetCode
+LeetCode practicing 
