@@ -1,0 +1,31 @@
+class Solution(object):
+    def longestCommonPrefix(self, strs):
+        """
+        :type strs: List[str]
+        :rtype: str
+        """
+        if not strs:
+            return ""
+        lenlist=len(strs)
+        minlenstr=200
+        minstr=""
+        match=0
+        for i in range(lenlist):
+            if len(strs[i])<minlenstr:
+                minlenstr=len(strs[i])
+                minstr=strs[i]#拿最短的整個詞出來
+        strs=sorted(strs)
+        for j in range(minlenstr,0,-1):
+            match=0
+            for k in range(lenlist):
+                if minstr!=strs[k][0:j]:
+                    minstr=strs[k][0:j-1]#不對的話就少取一位繼續做
+                    break
+                else:
+                    match=match+1
+            if match==lenlist:
+                return minstr
+            elif match!=0 and j==1:
+                return ""
+        if match==0:
+            return ""
