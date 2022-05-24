@@ -1,0 +1,34 @@
+class Solution(object):
+    def isPalindrome(self, x):
+        """
+        :type x: int
+        :rtype: bool
+        """
+        s=str(x)
+        len_x=len(s)
+        if len_x%2==0:
+            n=len_x/2
+            new1=""
+            new2=""
+            for i in range(0,len(s)/2):
+                new1=new1+str(s[i])
+            for j in range(len(s)-1,len(s)/2-1,-1):
+                new2=new2+str(s[j])
+            if new1==new2:
+                return True                
+            else:
+                return False 
+        else:
+            n=len_x//2
+            new1=""
+            new2=""
+            for i in range(0,len(s)//2):
+                new1=new1+str(s[i])
+            for j in range(len(s)-1,len(s)//2,-1):
+                new2=new2+str(s[j])
+            if new1==new2:
+                return True                
+            else:
+                return False
+            
+     
