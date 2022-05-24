@@ -1,0 +1,24 @@
+lass Solution(object):
+    def isValid(self, s):
+        """
+        :type s: str
+        :rtype: bool
+        """
+        len_s=len(s)
+        if len_s%2!=0:
+            return False 
+        else:
+            for i in range(len_s/2):
+                if "()"in s:
+                    s=s.replace("()","")
+                if "{}"in s:
+                    s=s.replace("{}","")
+                if "[]"in s:
+                    s=s.replace("[]","")
+                if s==None:
+                    return True
+            if s:
+                return False
+            else:
+                return True
+        
