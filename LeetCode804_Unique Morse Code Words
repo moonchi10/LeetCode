@@ -1,0 +1,36 @@
+class Solution(object):
+    def uniqueMorseRepresentations(self, words):
+        """
+        :type words: List[str]
+        :rtype: int
+        """
+        lenWords=len(words)
+        transDict=dict()
+        morseList=[".-","-...","-.-.","-..",".","..-.","--.","....","..",".---","-.-",".-..","--","-.","---",".--.","--.-",".-.","...","-","..-","...-",".--","-..-","-.--","--.."]
+        outputList=[[] for _ in range(lenWords)]
+        
+        for i in range(ord('a'),ord('z')+1):
+            transDict.update({i:morseList[i-97]})
+        # print(transDict)
+        for i in range(lenWords):
+            morse=""
+            for letter in words[i]:
+                morse=morse+transDict[ord(letter)]
+            outputList[i].append(morse)
+        # print(outputList)
+        
+        counter=1
+        outputList=sorted(outputList)
+        base=outputList[0]
+        for m in outputList:
+            if counter<lenWords:
+                if m==base:
+                    # print(m)
+                    continue
+                else:
+                    counter+=1
+                    base=m
+                    # print(m,"+1")
+            else:
+                break
+        return counter
